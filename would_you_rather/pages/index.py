@@ -9,15 +9,19 @@ f.close()
 class State(rx.State):
     scenarios = json.loads(filedata)
     current_scenario: dict = random.choice(scenarios)
-    choice: str = ""
-    
+    choice:str
+    redirect_url:str
+    qid:int
+    def get_redirect_url(self):
+        self.redirect_url = "/result?qid=" + str(self.qid)+ "&choice=" + self.choice
     def new_scenario(self):
         self.current_scenario = random.choice(self.scenarios)
         self.choice = ""
-
+        self.qid = self.scenarios.index(self.current_scenario)
     def make_choice(self, option: str):
         self.choice = option
-        print(self.choice)
+        self.get_redirect_url()
+        
 
 def index():
     return rx.box(
@@ -66,15 +70,16 @@ def index():
                 State.choice != "",
                 rx.text(f"You chose: {State.current_scenario[State.choice]}", font_size="lg", font_weight="bold", color="purple.500", text_align="center"),
             ),
-            rx.button(
-                "Next Scenario",
-                on_click=rx.redirect(
-                    "/result/"
+            rx.link(
+                rx.button(
+                    "Next Scenario",
+                    color_scheme="teal",
+                    size="3",
+                    width="600px",
                 ),
-                color_scheme="teal",
-                size="3",
-                width="600px",
+                href=State.redirect_url
             ),
+            
             width="800px",
             spacing="6",
             align="center",
@@ -84,4 +89,5 @@ def index():
         display="flex",
         justify_content="center",
         align_items="center",
+        on_mount=State.new_scenario
     )

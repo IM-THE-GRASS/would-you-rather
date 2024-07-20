@@ -48,7 +48,7 @@
         "option2": 2
     },
     "12": {
-        "option1": 0,
+        "option1": 1,
         "option2": 4
     },
     "13": {
@@ -64,7 +64,7 @@
         "option2": 2
     },
     "16": {
-        "option1": 0,
+        "option1": 1,
         "option2": 1
     },
     "17": {
@@ -92,7 +92,7 @@
         "option2": 2
     },
     "23": {
-        "option1": 0,
+        "option1": 1,
         "option2": 3
     },
     "24": {
@@ -140,7 +140,7 @@
         "option2": 2
     },
     "35": {
-        "option1": 0,
+        "option1": 1,
         "option2": 1
     },
     "36": {
@@ -172,11 +172,11 @@
         "option2": 1
     },
     "43": {
-        "option1": 0,
+        "option1": 1,
         "option2": 3
     },
     "44": {
-        "option1": 0,
+        "option1": 1,
         "option2": 1
     },
     "45": {
@@ -189,7 +189,7 @@
     },
     "47": {
         "option1": 0,
-        "option2": 0
+        "option2": 1
     },
     "48": {
         "option1": 3,
@@ -200,7 +200,7 @@
         "option2": 2
     },
     "50": {
-        "option1": 0,
+        "option1": 1,
         "option2": 2
     },
     "51": {
