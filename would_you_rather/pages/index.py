@@ -22,7 +22,30 @@ class State(rx.State):
         self.choice = option
         self.get_redirect_url()
         
-
+def confirm_button():
+    return rx.cond(
+        State.choice != "",
+        rx.button(
+            "Confirm",
+            color_scheme="teal",
+            size="3",
+            width="600px",
+            on_click=rx.redirect(
+                State.redirect_url
+            ),
+        ),
+        rx.button(
+            "Confirm",
+            color_scheme="teal",
+            disabled=True,
+            size="3",
+            width="600px",
+            on_click=rx.redirect(
+                State.redirect_url
+            ),
+        )
+    )
+    
 def index():
     return rx.box(
         rx.vstack(
@@ -66,19 +89,11 @@ def index():
                 width="600px",
                 justify="center",
             ),
-            rx.cond(
-                State.choice != "",
-                rx.text(f"You chose: {State.current_scenario[State.choice]}", font_size="lg", font_weight="bold", color="purple.500", text_align="center"),
-            ),
-            rx.link(
-                rx.button(
-                    "Next Scenario",
-                    color_scheme="teal",
-                    size="3",
-                    width="600px",
-                ),
-                href=State.redirect_url
-            ),
+#            rx.cond(
+#                State.choice != "",
+#                rx.text(f"You chose: {State.current_scenario[State.choice]}", font_size="lg", font_weight="bold", color="purple.500", text_align="center"),
+#            ),
+            confirm_button(),
             
             width="800px",
             spacing="6",
